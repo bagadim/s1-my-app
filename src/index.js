@@ -1,17 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+if (module.hot) {
+    module.hot.accept();
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+    const buttonText = { text: 'Click me' };
+    const btnStyle = {
+        backgroundColor: 'blue',
+        color: 'white',
+        border: '1px solid red',
+    };
+    const labelText = 'Enter name';
+    return (
+        <div>
+            <label className="label" htmlFor="name">
+                {labelText}
+            </label>
+            <input type="text" id="name" />
+            <button style={btnStyle}>{buttonText.text}</button>
+        </div>
+    );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
